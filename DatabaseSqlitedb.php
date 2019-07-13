@@ -20,4 +20,4 @@
  * @author Mark A. Hershberger <mah@nichework.com>
  */
 
-class_alias( "MediaWiki\\Extension\\SQLiteDB\\Database", "DatabaseSqlite" );
+class_alias( "MediaWiki\\Extension\\SQLiteDB\\Database", "DatabaseSqlitedb" );
