@@ -1,0 +1,67 @@
+{
+	"name": "mediawiki/sqlite-db",
+	"extra": {
+		"installer-name": "SQLiteDB"
+	},
+	"type": "mediawiki-extension",
+	"description": "An extension that enables the SQLite DB",
+	"keywords": [
+		"mediawiki",
+		"sqlite",
+		"database"
+	],
+	"homepage": "https://www.mediawiki.org/wiki/Extension:SQLiteDB",
+	"license": "GPL-3.0-or-later",
+	"authors": [
+		{
+			"name": "Mark A. Hersbherger",
+			"role": "Creator"
+		}
+	],
+	"minimum-stability": "stable",
+	"support": {
+		"issues": "https://github.com/MWStake/SQLiteDB/issues",
+		"source": "https://github.com/MWStake/SQLiteDB"
+	},
+	"require": {
+		"php": ">=5.6",
+		"composer/installers": "1.*,>=1.0.1"
+	},
+	"require-dev": {
+		"mediawiki/mediawiki-codesniffer": "26.0.0",
+		"phpmd/phpmd": "~2.1",
+		"vimeo/psalm": "^3.4"
+	},
+	"autoload": {
+		"files" : [
+			"SqliteUpdater.php",
+			"SqliteInstaller.php",
+			"DatabaseSqlite.php"
+		],
+		"psr-4": {
+			"MediaWiki\\Extension\\SQLiteDB\\": "src/"
+		}
+	},
+	"config": {
+		"process-timeout": 0
+	},
+	"scripts":{
+		"phpunit": "php ../../tests/phpunit/phpunit.php -c phpunit.xml.dist",
+		"test": "php ../../tests/phpunit/phpunit.php -c phpunit.xml.dist",
+		"unit": "composer phpunit -- --testsuite semantic-scribunto-unit",
+		"integration": "composer phpunit -- --testsuite semantic-scribunto-integration",
+		"cs": [
+			"vendor/bin/phpcs src/* *.php -sp",
+			"vendor/bin/phpmd src/ text phpmd.xml"
+		],
+		"ci": [
+			"composer validate --no-interaction",
+			"composer phpunit",
+			"composer cs"
+		],
+		"fix": [
+			"vendor/bin/phpcbf src/* *.php",
+			"vendor/bin/phpmd src/ text phpmd.xml"
+		]
+	}
+}

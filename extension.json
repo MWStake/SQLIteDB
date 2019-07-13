@@ -1,0 +1,30 @@
+{
+	"name": "SQLiteDB",
+	"author": [
+		"[http://hexmode.com/ Mark A. Hershberger]"
+	],
+	"url": "https://www.mediawiki.org/wiki/Extension:SQLite",
+	"descriptionmsg": "sqlite-desc",
+	"license-name": "GPL-3.0-or-later",
+	"type": "other",
+	"requires": {
+		"MediaWiki": ">= 1.31.0"
+	},
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\SQLiteDB\\": "src/"
+	},
+	"Hooks": {
+		"LoadExtensionSchemaUpdates": "MediaWiki\\Extension\\SQLiteDB\\Hook::onLoadExtensionSchemaUpdates"
+	},
+	"AutoloadClasses": {
+		"DatabaseSQLite": "DatabaseSqlite.php",
+		"SQLiteInstaller": "SqliteInstaller.php",
+		"SQLiteUpdater": "SqliteUpdater.php"
+	},
+	"MessagesDirs": {
+		"SQLiteDB": [
+			"i18n"
+		]
+	},
+	"manifest_version": 2
+}

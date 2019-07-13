@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+		]
+	},
+	"config-type-sqlite": "{{optional}}",
+	"config-dbsupport-sqlite": "Used in:\n* {{msg-mw|config-support-info}}\n{{Related|Config-dbsupport}}",
+	"config-header-sqlite": "Header for SQLite XtraDB database settings in the MediaWiki installer.",
+	"config-sqlite-engine": "Field label for SQLite storage engine in the MediaWiki installer.",
+	"config-sqlite-innodb": "Option for the SQLite storage engine in the MediaWiki installer.",
+	"config-sqlite-engine-help": "Help text in MediaWiki installer with advice for picking a MySQL storage engine."
+}
