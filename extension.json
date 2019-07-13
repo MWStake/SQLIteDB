@@ -27,7 +27,9 @@
 		]
 	},
 	"config": {
-		"SQLiteDataDir": ""
+		"SQLiteDataDir": {
+			"value": false
+		}
 	},
 	"manifest_version": 2
 }

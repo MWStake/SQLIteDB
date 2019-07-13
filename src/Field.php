@@ -21,9 +21,9 @@
  */
 namespace MediaWiki\Extension\SQLiteDB;
 
-use Wikimedia\Rdbms\Field;
+use Wikimedia\Rdbms\Field as BaseField;
 
-class SQLiteField implements Field {
+class Field implements BaseField {
 	private $info, $tableName;
 
 	function __construct( $info, $tableName ) {

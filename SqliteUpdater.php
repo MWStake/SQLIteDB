@@ -20,4 +20,4 @@
  * @author Mark A. Hershberger <mah@nichework.com>
  */
 
-class_alias( "MysqlUpdater", "SQLiteUpdater" );
+class_alias( "MediaWiki\\Extension\\SQLiteDB\\Updater", "SQLiteUpdater" );

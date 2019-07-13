@@ -22,11 +22,12 @@
 namespace MediaWiki\Extension\SQLiteDB;
 
 use DatabaseUpdater;
+use MediaWiki\Extension\SQLiteDB\Database as DatabaseSqlite;
 
 /**
  * Lifted from core
  */
-class SqliteUpdater extends DatabaseUpdater {
+class Updater extends DatabaseUpdater {
 
 	protected function getCoreUpdateList() {
 		return [
@@ -272,7 +273,10 @@ class SqliteUpdater extends DatabaseUpdater {
 				'PHP is missing FTS3 support, downgrading tables'
 			);
 		} elseif ( !$fts3tTable && $module == 'FTS3' ) {
-			$this->applyPatch( 'searchindex-fts3.sql', false, "Adding FTS3 search capabilities" );
+			$this->applyPatch(
+				__DIR__ . '/../maintenance/searchindex-fts3.sql', true,
+				"Adding FTS3 search capabilities"
+			);
 		} else {
 			$this->output( "...fulltext search table appears to be in order.\n" );
 		}

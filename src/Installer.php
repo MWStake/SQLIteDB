@@ -359,12 +359,42 @@ EOT;
 		$fts3tTable = $this->db->checkForEnabledSearch();
 		if ( $fts3tTable && !$module ) {
 			$status->warning( 'config-sqlite-fts3-downgrade' );
-			$this->db->sourceFile( "$IP/maintenance/sqlite/archives/searchindex-no-fts.sql" );
+			$this->db->sourceFile( __DIR__ . "/../maintenance/searchindex-no-fts.sql" );
 		} elseif ( !$fts3tTable && $module == 'FTS3' ) {
-			$this->db->sourceFile( "$IP/maintenance/sqlite/archives/searchindex-fts3.sql" );
+			$this->db->sourceFile( __DIR__ . "/../maintenance/searchindex-fts3.sql" );
 		}
 
 		return $status;
+	}
+
+	/**
+	 * Return a path to the DBMS-specific SQL file if it exists,
+	 * otherwise default SQL file
+	 *
+	 * @param IDatabase $db
+	 * @param string $filename
+	 * @return string
+	 */
+	private function getSqlFilePath( $db, $filename ) {
+		global $IP;
+
+		$dbmsSpecificFilePath = __DIR__ . "/../maintenance/$filename";
+		if ( file_exists( $dbmsSpecificFilePath ) ) {
+			return $dbmsSpecificFilePath;
+		} else {
+			return "$IP/maintenance/$filename";
+		}
+	}
+
+	/**
+	 * Return a path to the DBMS-specific schema file,
+	 * otherwise default to tables.sql
+	 *
+	 * @param IDatabase $db
+	 * @return string
+	 */
+	public function getSchemaPath( $db ) {
+		return $this->getSqlFilePath( $db, 'tables.sql' );
 	}
 
 	/**
