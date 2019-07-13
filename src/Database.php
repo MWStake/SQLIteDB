@@ -2,6 +2,10 @@
 # vi:shiftwidth=4 tabstop=4 textwidth=76
 
 /*
+ * This is the SQLite database abstraction layer.  See
+ * maintenance/sqlite/README for development notes and other specific
+ * information
+ *
  * Copyright (C) 2019  NicheWork, LLC
  *
  * This program is free software: you can redistribute it and/or modify
@@ -22,9 +26,8 @@
 namespace MediaWiki\Extension\SQLiteDB;
 
 use Wikimedia\Rdbms\Database as BaseDB;
-use Wikimedia\Rdbms\DatabaseMysqli;
 
-class Database extends DatabaseMysqli {
+class Database extends BaseDB {
 	public function lockIsFree( $lockName, $method ) {
 		return BaseDB::lockIsFree( $lockName, $method );
 	}
@@ -54,7 +57,6 @@ class Database extends DatabaseMysqli {
 	}
 
 	public function getSoftwareLink() {
-		return '[https://www.sqlite.com/software/mysql-database/percona-xtradb-cluster '
-			. 'SQLite XtraDB Cluster]';
+		return '[https://sqlite.org/ SQLite]';
 	}
 }

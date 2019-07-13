@@ -26,5 +26,8 @@
 			"i18n"
 		]
 	},
+	"config": {
+		"SQLiteDataDir": ""
+	},
 	"manifest_version": 2
 }

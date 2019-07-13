@@ -2,12 +2,8 @@
 	"@metadata": {
 		"authors": []
 	},
-	"sqlitedb-desc": "An extension to allow MediaWiki to use a SQLite XtraDB Cluster.",
-	"config-type-sqlite": "SQLite XtraDB Cluster",
-	"config-dbsupport-sqlite": "* [https://www.percona.com/software/mysql-database/percona-xtradb-cluster SQLite XtraDB Cluster] is a MySQL-like database cluster.",
-	"config-header-sqlite": "SQLite XtraDB Cluster settings",
-	"config-sqlite-engine": "The only choice for now is InnoDB",
-	"config-sqlite-innodb": "This is your only choice",
-	"config-sqlite-engine-help": "What do you need help with?"
+	"sqlitedb-desc": "An extension to allow MediaWiki to use a SQLite database.",
+	"config-type-sqlite": "SQLite",
+	"config-dbsupport-sqlite": "* [https://sqlite.org/ SQLite] is a library that implements a small, fast, self-contained, high-reliability, full-featured, SQL database engine.",
+	"config-header-sqlite": "SQLite settings"
 }
-
