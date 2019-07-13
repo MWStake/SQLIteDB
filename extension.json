@@ -16,11 +16,6 @@
 	"Hooks": {
 		"LoadExtensionSchemaUpdates": "MediaWiki\\Extension\\SQLiteDB\\Hook::onLoadExtensionSchemaUpdates"
 	},
-	"AutoloadClasses": {
-		"DatabaseSQLitedb": "DatabaseSqlitedb.php",
-		"SQLitedbInstaller": "SqlitedbInstaller.php",
-		"SQLitedbUpdater": "SqlitedbUpdater.php"
-	},
 	"MessagesDirs": {
 		"SQLiteDB": [
 			"i18n"
