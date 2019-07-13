@@ -4,6 +4,20 @@
 	},
 	"sqlitedb-desc": "An extension to allow MediaWiki to use a SQLite database.",
 	"config-type-sqlite": "SQLite",
-	"config-dbsupport-sqlite": "* [https://sqlite.org/ SQLite] is a library that implements a small, fast, self-contained, high-reliability, full-featured, SQL database engine.",
-	"config-header-sqlite": "SQLite settings"
+	"config-sqlite-name-help": "Choose a name that identifies your wiki.\nDo not use spaces or hyphens.\nThis will be used for the SQLite data filename.",
+	"config-sqlite-parent-unwritable-group": "Cannot create the data directory <code><nowiki>$1</nowiki></code>, because the parent directory <code><nowiki>$2</nowiki></code> is not writable by the webserver.\n\nThe installer has determined the user your webserver is running as.\nMake the <code><nowiki>$3</nowiki></code> directory writable by it to continue.\nOn a Unix/Linux system do:\n\n<pre>cd $2\nmkdir $3\nchgrp $4 $3\nchmod g+w $3</pre>",
+	"config-sqlite-parent-unwritable-nogroup": "Cannot create the data directory <code><nowiki>$1</nowiki></code>, because the parent directory <code><nowiki>$2</nowiki></code> is not writable by the webserver.\n\nThe installer could not determine the user your webserver is running as.\nMake the <code><nowiki>$3</nowiki></code> directory globally writable by it (and others!) to continue.\nOn a Unix/Linux system do:\n\n<pre>cd $2\nmkdir $3\nchmod a+w $3</pre>",
+	"config-sqlite-mkdir-error": "Error creating the data directory \"$1\".\nCheck the location and try again.",
+	"config-sqlite-dir-unwritable": "Unable to write to the directory \"$1\".\nChange its permissions so that the webserver can write to it, and try again.",
+	"config-sqlite-connection-error": "$1.\n\nCheck the data directory and database name below and try again.",
+	"config-sqlite-readonly": "The file <code>$1</code> is not writeable.",
+	"config-sqlite-cant-create-db": "Could not create database file <code>$1</code>.",
+	"config-sqlite-fts3-downgrade": "PHP is missing FTS3 support, downgrading tables.",
+	"config-dbsupport-sqlite": "* [{{int:version-db-sqlite-url}} SQLite] is a lightweight database system that is very well supported. ([https://www.php.net/manual/en/pdo.installation.php How to compile PHP with SQLite support], uses PDO)",
+	"config-header-sqlite": "SQLite settings",
+	"version-db-sqlite-url": "https://www.sqlite.org/",
+	"config-no-fts3": "<strong>Warning:</strong> SQLite is compiled without the [//sqlite.org/fts3.html FTS3 module], search features will be unavailable on this backend.",
+	"config-sqlite-dir": "SQLite data directory:",
+	"config-sqlite-dir-help": "SQLite stores all data in a single file.\n\nThe directory you provide must be writable by the webserver during installation.\n\nIt should <strong>not</strong> be accessible via the web; this is why we're not putting it where your PHP files are.\n\nThe installer will write a <code>.htaccess</code> file along with it, but if that fails someone can gain access to your raw database.\nThat includes raw user data (email addresses, hashed passwords) as well as deleted revisions and other restricted data on the wiki.\n\nConsider putting the database somewhere else altogether, for example in <code>/var/lib/mediawiki/yourwiki</code>.",
+	"config-outdated-sqlite": "<strong>Warning:</strong> you have SQLite $2, which is lower than minimum required version $1. SQLite will be unavailable."
 }

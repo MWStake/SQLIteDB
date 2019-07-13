@@ -22,9 +22,9 @@
 
 if ( defined( 'MEDIAWIKI_INSTALL' ) ) {
 	require_once getenv( "MW_INSTALL_PATH" ) . "/includes/installer/Installer.php";
-	Installer::addDBType( "sqlite" );
+	Installer::addDBType( "sqlitedb" );
 	global $wgMessagesDirs;
-	$wgMessagesDirs['SqliteInstaller'] = __DIR__ . '/i18n';
+	$wgMessagesDirs['SqlitedbInstaller'] = __DIR__ . '/i18n';
 }
 
-class_alias( "MediaWiki\\Extension\\SQLiteDB\\Installer", "SQLiteInstaller" );
+class_alias( "MediaWiki\\Extension\\SQLiteDB\\Installer", "SQLitedbInstaller" );

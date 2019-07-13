@@ -18,8 +18,8 @@
 	},
 	"AutoloadClasses": {
 		"DatabaseSQLite": "DatabaseSqlite.php",
-		"SQLiteInstaller": "SqliteInstaller.php",
-		"SQLiteUpdater": "SqliteUpdater.php"
+		"SQLiteInstaller": "SqlitedbInstaller.php",
+		"SQLiteUpdater": "SqlitedbUpdater.php"
 	},
 	"MessagesDirs": {
 		"SQLiteDB": [
