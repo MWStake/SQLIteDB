@@ -1,7 +1,27 @@
 * SQLite on MediaWiki
 
+This extension is based on a [[https://gerrit.wikimedia.org/r/#/c/mediawiki/core/+/522614/][WIP in the WMF's gerrit]].
+
+** How to use it
+
+Put the following in your =composer.local.json=:
+#+begin_src json
+{
+	"require": {
+		"mediawiki/sqlite-db": "dev-master"
+	}
+}
+#+end_src
+and then [[https://getcomposer.org/download/][download composer]] and run =composer update=.
+
 You must set the environment variable =MW_INSTALL_PATH= to your mediawiki root to use this extension.
+#+begin_src sh
+$ cd YOUR_MEDIAWIKI_INSTALLATION
+$ MW_INSTALL_PATH=`pwd`
+$ export MW_INSTALL_PATH
+#+end_src
 
-In order to install on a SQLite DB this extension tells [[https://getcomposer.org/][composer]] how to autoload it.  This is necessary so that when you specify “sqlite” as the db type during installation, it can find the right db driver.  It also allows MediaWiki to use [[https://www.mediawiki.org/wiki/Manual:$wgDBtype][$wgDBtype]] to find the provided =DatabasePercona= class.
+** Why this is necessary for installation
+In order to install on a SQLite DB this extension tells [[https://getcomposer.org/][composer]] how to autoload it.  This is necessary so that when you specify “sqlite” as the db type during installation, it can find the right db driver.  It also allows MediaWiki to use [[https://www.mediawiki.org/wiki/Manual:$wgDBtype][$wgDBtype]] to find the provided =DatabaseSqlitedb= class.
 
-Because of this bootstrapping, composer's autoloader needs to be able to use MediaWiki's autoloader and we make it available by loading [[https://www.mediawiki.org/wiki/Manual:AutoLoader.php][$MW_INSTALL_PATH/includes/AutoLoader.php]].
+Because of this bootstrapping, composer's autoloader needs to be able to use MediaWiki's autoloader and we make it available by loading [[https://www.mediawiki.org/wiki/Manual:AutoLoader.php][$MW_INSTALL_PATH/includes/installer/Installer.php]] and using [[https://gerrit.wikimedia.org/r/#/c/mediawiki/core/+/519681/][Installer::addDBType()]] to tell MediaWiki's installer about this extension.
