@@ -34,9 +34,9 @@
 	},
 	"autoload": {
 		"files" : [
-			"SqliteUpdater.php",
-			"SqliteInstaller.php",
-			"DatabaseSqlite.php"
+			"SqlitedbUpdater.php",
+			"SqlitedbInstaller.php",
+			"DatabaseSqlitedb.php"
 		],
 		"psr-4": {
 			"MediaWiki\\Extension\\SQLiteDB\\": "src/"
