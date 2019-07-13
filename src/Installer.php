@@ -48,7 +48,7 @@ class Installer extends DatabaseInstaller {
 	];
 
 	public function getName() {
-		return 'sqlite';
+		return 'sqlitedb';
 	}
 
 	public function isCompiled() {
@@ -188,7 +188,7 @@ class Installer extends DatabaseInstaller {
 		$dbName = $this->getVar( 'wgDBname' );
 		try {
 			# @todo FIXME: Need more sensible constructor parameters, e.g. single associative array
-			$db = Database::factory( 'sqlite', [ 'dbname' => $dbName, 'dbDirectory' => $dir ] );
+			$db = Database::factory( 'sqlitedb', [ 'dbname' => $dbName, 'dbDirectory' => $dir ] );
 			$status->value = $db;
 		} catch ( DBConnectionError $e ) {
 			$status->fatal( 'config-sqlite-connection-error', $e->getMessage() );
@@ -246,7 +246,7 @@ class Installer extends DatabaseInstaller {
 		# Create the global cache DB
 		try {
 			$conn = Database::factory(
-				'sqlite', [ 'dbname' => 'wikicache', 'dbDirectory' => $dir ] );
+				'sqlitedb', [ 'dbname' => 'wikicache', 'dbDirectory' => $dir ] );
 			# @todo: don't duplicate objectcache definition, though it's very simple
 			$sql =
 <<<EOT
@@ -267,7 +267,7 @@ EOT;
 		# Create the l10n cache DB
 		try {
 			$conn = Database::factory(
-				'sqlite', [ 'dbname' => "{$db}_l10n_cache", 'dbDirectory' => $dir ] );
+				'sqlitedb', [ 'dbname' => "{$db}_l10n_cache", 'dbDirectory' => $dir ] );
 			# @todo: don't duplicate l10n_cache definition, though it's very simple
 			$sql =
 <<<EOT
@@ -288,7 +288,7 @@ EOT;
 		# Create the job queue DB
 		try {
 			$conn = Database::factory(
-				'sqlite', [ 'dbname' => "{$db}_jobqueue", 'dbDirectory' => $dir ] );
+				'sqlitedb', [ 'dbname' => "{$db}_jobqueue", 'dbDirectory' => $dir ] );
 			# @todo: don't duplicate job definition, though it's very static
 			$sql =
 <<<EOT
@@ -412,7 +412,7 @@ EOT;
 	'class' => SqlBagOStuff::class,
 	'loggroup' => 'SQLBagOStuff',
 	'server' => [
-		'type' => 'sqlite',
+		'type' => 'sqlitedb',
 		'dbname' => 'wikicache',
 		'tablePrefix' => '',
 		'variables' => [ 'synchronous' => 'NORMAL' ],
@@ -422,7 +422,7 @@ EOT;
 	]
 ];
 \$wgLocalisationCacheConf['storeServer'] = [
-	'type' => 'sqlite',
+	'type' => 'sqlitedb',
 	'dbname' => \"{\$wgDBname}_l10n_cache\",
 	'tablePrefix' => '',
 	'variables' => [ 'synchronous' => 'NORMAL' ],
@@ -434,7 +434,7 @@ EOT;
 	'class' => 'JobQueueDB',
 	'claimTTL' => 3600,
 	'server' => [
-		'type' => 'sqlite',
+		'type' => 'sqlitedb',
 		'dbname' => \"{\$wgDBname}_jobqueue\",
 		'tablePrefix' => '',
 		'variables' => [ 'synchronous' => 'NORMAL' ],

@@ -119,7 +119,7 @@ class Database extends BaseDB {
 		$p['schema'] = null;
 		$p['tablePrefix'] = '';
 		/** @var DatabaseSqlite $db */
-		$db = Database::factory( 'sqlite', $p );
+		$db = Database::factory( 'sqlitedb', $p );
 
 		return $db;
 	}
@@ -789,7 +789,7 @@ class Database extends BaseDB {
 	 * @return string Wikitext of a link to the server software's web site
 	 */
 	public function getSoftwareLink() {
-		return "[{{int:version-db-sqlite-url}} SQLite]";
+		return "[{{int:version-db-sqlitedb-url}} SQLite] extension";
 	}
 
 	/**
@@ -1182,4 +1182,3 @@ class Database extends BaseDB {
 		 */
 	}
 }
-
