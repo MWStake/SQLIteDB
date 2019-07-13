@@ -128,7 +128,7 @@ class Database extends BaseDB {
 	 * @return string
 	 */
 	public function getType() {
-		return 'sqlite';
+		return 'sqlitedb';
 	}
 
 	/**
