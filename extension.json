@@ -4,11 +4,11 @@
 		"[http://hexmode.com/ Mark A. Hershberger]"
 	],
 	"url": "https://www.mediawiki.org/wiki/Extension:SQLite",
-	"descriptionmsg": "sqlite-desc",
+	"descriptionmsg": "sqlitedb-desc",
 	"license-name": "GPL-3.0-or-later",
 	"type": "other",
 	"requires": {
-		"MediaWiki": ">= 1.31.0"
+		"MediaWiki": ">= 1.34.0"
 	},
 	"AutoloadNamespaces": {
 		"MediaWiki\\Extension\\SQLiteDB\\": "src/"

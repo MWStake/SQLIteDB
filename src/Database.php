@@ -25,17 +25,20 @@
  */
 namespace MediaWiki\Extension\SQLiteDB;
 
+use DBExpectedError;
+use Exception;
+use FSLockManager;
+use LockManager;
+use MediaWiki\Config\ServiceOptions;
 use NullLockManager;
 use PDO;
 use PDOException;
-use Exception;
-use LockManager;
-use FSLockManager;
 use RuntimeException;
-use stdClass;
+use Wikimedia\Rdbms\Blob;
 use Wikimedia\Rdbms\Database as BaseDB;
-use Wikimedia\Rdbms\ResultWrapper;
 use Wikimedia\Rdbms\DatabaseDomain;
+use Wikimedia\Rdbms\ResultWrapper;
+use stdClass;
 
 /**
  * Lifted from core
@@ -1146,6 +1149,37 @@ class Database extends BaseDB {
 	 */
 	protected function getBindingHandle() {
 		return parent::getBindingHandle();
+	}
+
+	/**
+	 * @param ServiceOptions $options
+	 * @return array
+	 */
+	public static function initServerInfo( ServiceOptions $options ) {
+		global $wgSQLiteDataDir;
+		$httpMethod = $_SERVER['REQUEST_METHOD'] ?? null;
+		// T93097: hint for how file-based databases (e.g. sqlite) should go about locking.
+		// See https://www.sqlite.org/lang_transaction.html
+		// See https://www.sqlite.org/lockingv3.html#shared_lock
+		$isHttpRead = in_array( $httpMethod, [ 'GET', 'HEAD', 'OPTIONS', 'TRACE' ] );
+		return [
+			'dbDirectory' => $wgSQLiteDataDir,
+			'trxMode' => $isHttpRead ? 'DEFERRED' : 'IMMEDIATE'
+		];
+		/**
+		 * When SQLite indexes were introduced in r45764, it was noted that
+		 * SQLite requires index names to be unique within the whole database,
+		 * not just within a schema. As discussed in CR r45819, to avoid the
+		 * need for a schema change on existing installations, the indexes
+		 * were implicitly mapped from the new names to the old names.
+		 *
+		 * This mapping can be removed if DB patches are introduced to alter
+		 * the relevant tables in existing installations. Note that because
+		 * this index mapping applies to table creation, even new installations
+		 * of MySQL have the old names (except for installations created during
+		 * a period where this mapping was inappropriately removed, see
+		 * T154872).
+		 */
 	}
 }
 

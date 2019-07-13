@@ -23,10 +23,11 @@ namespace MediaWiki\Extension\SQLiteDB;
 
 use DatabaseInstaller;
 use Installer as CoreInstaller;
-use Wikimedia\Rdbms\Database;
-use Wikimedia\Rdbms\DBConnectionError;
-use Status;
+use LocalSettingsGenerator;
 use MediaWiki\Extension\SQLiteDB\Database as DatabaseSqlite;
+use Status;
+use Wikimedia\Rdbms\DBConnectionError;
+use Wikimedia\Rdbms\Database;
 
 /**
  * Lifted from core

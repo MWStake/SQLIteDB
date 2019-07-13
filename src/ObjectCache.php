@@ -18,7 +18,7 @@
 	];
 
 
-// From core 
+// From core
 		if ( isset( $params['factory'] ) ) {
 			return call_user_func( $params['factory'], $params );
 		} elseif ( isset( $params['class'] ) ) {
