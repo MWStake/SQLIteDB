@@ -99,6 +99,9 @@ class Database extends BaseDB {
 		} else {
 			$this->lockMgr = new NullLockManager( [ 'domain' => $this->getDomainID() ] );
 		}
+		if ( $this->dbDir === null && $this->dbPath === null ) {
+			throw new Exception( "Please use this commit: https://gerrit.wikimedia.org/r/#/c/mediawiki/core/+/522614/" );
+		}
 	}
 
 	protected static function getAttributes() {
